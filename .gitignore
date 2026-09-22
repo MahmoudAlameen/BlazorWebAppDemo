@@ -1,0 +1,89 @@
+# Build results
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+[Aa]rtifacts/
+
+# Visual Studio
+.vs/
+*.user
+*.userosscache
+*.suo
+*.rsuser
+*.sln.docstates
+*.VC.db
+*.VC.opendb
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# JetBrains Rider / ReSharper
+.idea/
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+# .NET generated files
+Generated\ Files/
+TestResults/
+BenchmarkDotNet.Artifacts/
+*.nupkg
+*.snupkg
+packages/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Blazor WebAssembly generated files
+wwwroot/_framework/
+wwwroot/service-worker-assets.js
+
+# Publish output
+publish/
+PublishProfiles/
+*.pubxml.user
+
+# Local configuration and secrets
+appsettings.Development.json
+appsettings.Local.json
+secrets.json
+.env
+.env.*
+!.env.example
+
+# Certificates and keys
+*.pfx
+*.p12
+*.key
+
+# Database files
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+
+# Node/npm files (when a frontend toolchain is used)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Operating-system files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.swp
+*~
