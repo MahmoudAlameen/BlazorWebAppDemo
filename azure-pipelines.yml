@@ -1,0 +1,47 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+  - main
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  buildConfiguration: Release
+  webProject: BlazorWebApp.csproj
+  azureServiceConnection: Azure-Service-Connection-Demo
+  webAppName: BlazorWebApp
+
+steps:
+  - task: UseDotNet@2
+    displayName: Install .NET
+    inputs:
+      packageType: sdk
+      version: 10.0.x
+
+  - task: DotNetCoreCLI@2
+    displayName: Build
+    inputs:
+      command: build
+      projects: $(webProject)
+      arguments: --configuration $(buildConfiguration)
+
+  - task: DotNetCoreCLI@2
+    displayName: Publish
+    inputs:
+      command: publish
+      publishWebProjects: false
+      projects: $(webProject)
+      arguments: --configuration $(buildConfiguration) --no-build --output $(Build.ArtifactStagingDirectory)
+      zipAfterPublish: true
+
+  - task: AzureWebApp@1
+    displayName: Deploy to Azure App Service
+    inputs:
+      azureSubscription: $(azureServiceConnection)
+      appType: webAppLinux
+      appName: $(webAppName)
+      package: $(Build.ArtifactStagingDirectory)/**/*.zip
